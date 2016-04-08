@@ -115,6 +115,8 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
              { default: true,        callback: function(response,convo) { convo.next(); convo.repeat(); } }
 	         
 	      ]);
+	      
+       }
 	    
   bot.reply(message, {
     attachments: attachments
