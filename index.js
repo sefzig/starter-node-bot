@@ -44,6 +44,11 @@ controller.hears('help', ['direct_message', 'direct_mention'], function (bot, me
   bot.reply(message, help)
 })
 
+controller.hears('hallo', ['direct_message', 'direct_mention'], function (bot, message) {
+  var help = 'Guten Tag.'
+  bot.reply(message, help)
+})
+
 controller.hears(['attachment'], ['direct_message', 'direct_mention'], function (bot, message) {
   var text = 'Beep Beep Boop is a ridiculously simple hosting platform for your Slackbots.'
   var attachments = [{
