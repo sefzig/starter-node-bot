@@ -116,7 +116,7 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
 	         
 	      ]);
 	      
-       }
+       });
 	    
   bot.reply(message, {
     attachments: attachments
