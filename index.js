@@ -61,63 +61,6 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
     color: '#7CD197'
   }]
 
- // -----------------
- // Register: Text
- // -----------------
-    
- // Konversation
-	controller.hears(['--text', '--text'],['direct_message','direct_mention','mention','ambient'],function(bot,message) {
-
-    // start a conversation to handle this response.
-       bot.startConversation(message,function(err,convo) {
-        
-          convo.ask('Text: Du kannst einen *`n`euen* Text verfassen, einen Text *`ö`ffnen*, *`b`earbeiten* oder *`e`ditieren*. Du kannst einen Text als HTML *`a`usgeben*, die *`h`ilfe* öffnen oder `abbrechen`.',[
-                
-             { pattern: 'abbrechen', callback: function(response,convo) { convo.next(); convo.sayFirst('Register "Text" abgebrochen.'); } },
-             { pattern: 'n',         callback: function(response,convo) { convo.next(); convo.sayFirst('Neuen Text anlegen: http://sefzig.net/text/'); } },
-             { pattern: 'h',         callback: function(response,convo) { convo.next(); convo.sayFirst('Die Hilfe öffnen: http://sefzig.net/text/hilfe/'); } },
-             { pattern: 'ö',         callback: function(response,convo) { 
-                      
-          convo.ask('Text öffnen: Schreibe das `Kürzel` des zu öffnenden Texts oder `abbrechen`.',[
-                         
-             { pattern: 'abbrechen', callback: function(response,convo) { convo.next(); convo.sayFirst('Register "Text öffnen" abgebrochen.'); } },
-             { default: true,        callback: function(response,convo) { convo.stop(); } }
-                         
-          ]); convo.next(); } },
-          
-             { pattern: 'a',         callback: function(response,convo) { 
-                      
-          convo.ask('Text exportieren: Schreibe das `Kürzel` des zu exportierenden Texts oder `abbrechen`.',[
-                         
-             { pattern: 'abbrechen', callback: function(response,convo) { convo.next(); convo.sayFirst('Register "Text exportieren" abgebrochen.'); } },
-             { default: true,        callback: function(response,convo) { convo.stop(); } }
-                         
-          ]); convo.next(); } },
-          
-             { pattern: 'b',         callback: function(response,convo) { 
-                      
-          convo.ask('Text bearbeiten: Schreibe das `Kürzel` des zu bearbeitenden Texts oder `abbrechen`.',[
-                         
-             { pattern: 'abbrechen', callback: function(response,convo) { convo.next(); convo.sayFirst('Register "Text bearbeiten" abgebrochen.'); } },
-             { default: true,        callback: function(response,convo) { convo.stop(); } }
-                         
-          ]); convo.next(); } },
-          
-             { pattern: 'e',         callback: function(response,convo) { 
-                      
-          convo.ask('Text editieren: Schreibe das `Kürzel` des zu editierenden Texts oder `abbrechen`.',[
-                         
-             { pattern: 'abbrechen', callback: function(response,convo) { convo.next(); convo.sayFirst('Register "Text editieren" abgebrochen.'); } },
-             { default: true,        callback: function(response,convo) { convo.stop(); } }
-                   
-          ]); convo.next(); } },
-          
-             { default: true,        callback: function(response,convo) { convo.next(); convo.repeat(); } }
-	         
-	      ]);
-	      
-       }));
-	    
   bot.reply(message, {
     attachments: attachments
   }, function (err, resp) {
